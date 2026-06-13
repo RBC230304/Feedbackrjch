@@ -5,6 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bamutia RD Block - Feedback Report</title>
 
+    <script>
+     const correctPassword = "admin123";
+
+     const enteredPassword = prompt("Enter Admin Password:");
+
+if (enteredPassword !== correctPassword) {
+    alert("Incorrect Password!");
+    window.location.href = "index.html"; // redirect back
+}
+</script>
+
     <style>
         *{
             margin:0;
