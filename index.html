@@ -1,0 +1,66 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Bamutia RD Block Feedback</title>
+<style>
+*{box-sizing:border-box}
+body{
+margin:0;font-family:Arial,sans-serif;
+background:url('building.jfif') center center/cover no-repeat fixed;
+min-height:100vh;display:flex;justify-content:center;align-items:center;
+}
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.35)}
+.wrap{position:relative;z-index:2;width:100%;max-width:760px;padding:20px}
+.banner{background:#083b8a;color:#fff;text-align:center;padding:18px;border-radius:18px;
+font-size:42px;font-weight:bold;margin-bottom:18px}
+.card{
+background:rgba(255,255,255,.18);
+backdrop-filter:blur(16px);
+border:1px solid rgba(255,255,255,.35);
+box-shadow:0 8px 32px rgba(0,0,0,.3);
+border-radius:24px;padding:28px;
+}
+h2{text-align:center}
+input,select,textarea{
+width:100%;padding:14px;margin:10px 0;
+background:rgba(255,255,255,.22);
+backdrop-filter:blur(10px);
+border:1px solid rgba(255,255,255,.5);
+border-radius:12px;font-size:16px;
+}
+button,a.btn{
+display:block;width:100%;padding:15px;margin-top:12px;
+border:none;border-radius:12px;background:#0a56d6;color:#fff;
+font-size:20px;text-align:center;text-decoration:none;cursor:pointer;
+}
+</style>
+</head>
+<body>
+<div class="overlay"></div>
+<div class="wrap">
+<div class="banner">BAMUTIA RD BLOCK</div>
+<div class="card">
+<h2>Feedback Form</h2>
+<form id="feedbackForm">
+<input id="name" placeholder="Name" required>
+<input id="email" type="email" placeholder="Email" required>
+<select id="rating"><option>Excellent</option><option>Good</option><option>Average</option><option>Poor</option></select>
+<textarea id="comments" rows="4" placeholder="Comments"></textarea>
+<button type="submit">Submit Feedback</button>
+</form>
+<a class="btn" href="report.html">View Report</a>
+</div>
+</div>
+<script>
+feedbackForm.addEventListener('submit',function(e){
+e.preventDefault();
+let data=JSON.parse(localStorage.getItem('feedbacks')||'[]');
+data.push({name:name.value,email:email.value,rating:rating.value,comments:comments.value});
+localStorage.setItem('feedbacks',JSON.stringify(data));
+alert('Feedback Submitted');
+this.reset();
+});
+</script>
+</body></html>
