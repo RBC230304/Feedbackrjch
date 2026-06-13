@@ -6,22 +6,22 @@
     <title>Bamutia RD Block - Feedback Report</title>
 
     <script>
-     const correctPassword = "admin123";
+        const correctPassword = "Rajbir@123";
 
-     const enteredPassword = prompt("Enter Admin Password:");
+        const enteredPassword = prompt("Enter Admin Password");
 
-if (enteredPassword !== correctPassword) {
-    alert("Incorrect Password!");
-    window.location.href = "index.html"; // redirect back
-}
-</script>
+        if (enteredPassword !== correctPassword) {
+            alert("Incorrect Password!");
+            window.location.href = "index.html";
+        }
+    </script>
 
     <style>
         *{
             margin:0;
             padding:0;
             box-sizing:border-box;
-            font-family:Arial, sans-serif;
+            font-family:Arial,sans-serif;
         }
 
         body{
@@ -102,82 +102,82 @@ if (enteredPassword !== correctPassword) {
 </head>
 <body>
 
-    <div class="header">
-        BAMUTIA RD BLOCK - FEEDBACK REPORT
-    </div>
+<div class="header">
+    BAMUTIA RD BLOCK - FEEDBACK REPORT
+</div>
 
-    <div class="container">
+<div class="container">
 
-        <button class="btn" onclick="clearFeedback()">
-            Clear All Feedback
-        </button>
+    <button class="btn" onclick="clearFeedback()">
+        Clear All Feedback
+    </button>
 
-        <table>
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Rating</th>
-                    <th>Comments</th>
-                </tr>
-            </thead>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Rating</th>
+                <th>Comments</th>
+            </tr>
+        </thead>
 
-            <tbody id="feedbackTable">
-            </tbody>
-        </table>
+        <tbody id="feedbackTable">
+        </tbody>
+    </table>
 
-    </div>
+</div>
 
-    <script>
+<script>
 
-        function loadFeedback() {
+function loadFeedback() {
 
-            let data = JSON.parse(localStorage.getItem("feedbacks")) || [];
+    let data = JSON.parse(localStorage.getItem("feedbacks")) || [];
 
-            let table = document.getElementById("feedbackTable");
+    let table = document.getElementById("feedbackTable");
 
-            if(data.length === 0){
-                table.innerHTML = `
-                    <tr>
-                        <td colspan="4" class="no-data">
-                            No feedback submitted yet.
-                        </td>
-                    </tr>
-                `;
-                return;
-            }
+    if(data.length === 0){
+        table.innerHTML = `
+            <tr>
+                <td colspan="4" class="no-data">
+                    No feedback submitted yet.
+                </td>
+            </tr>
+        `;
+        return;
+    }
 
-            table.innerHTML = "";
+    table.innerHTML = "";
 
-            data.forEach(item => {
+    data.forEach(item => {
 
-                table.innerHTML += `
-                    <tr>
-                        <td>${item.name || "N/A"}</td>
-                        <td>${item.email || "N/A"}</td>
-                        <td>${item.rating || "N/A"}</td>
-                        <td>${item.comments || "N/A"}</td>
-                    </tr>
-                `;
+        table.innerHTML += `
+            <tr>
+                <td>${item.name || "N/A"}</td>
+                <td>${item.email || "N/A"}</td>
+                <td>${item.rating || "N/A"}</td>
+                <td>${item.comments || "N/A"}</td>
+            </tr>
+        `;
 
-            });
-        }
+    });
+}
 
-        function clearFeedback(){
+function clearFeedback(){
 
-            if(confirm("Are you sure you want to clear all feedback?")){
+    if(confirm("Are you sure you want to clear all feedback?")){
 
-                localStorage.removeItem("feedbacks");
-
-                loadFeedback();
-
-            }
-
-        }
+        localStorage.removeItem("feedbacks");
 
         loadFeedback();
 
-    </script>
+    }
+
+}
+
+loadFeedback();
+
+</script>
 
 </body>
 </html>
