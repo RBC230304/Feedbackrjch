@@ -1,27 +1,21 @@
 
 <!DOCTYPE html><html><head><meta charset="UTF-8"><title>Report</title>
-<style>
-body{font-family:Arial;background:#f5f5f5;margin:0}
-.header{background:#083b8a;color:#fff;padding:20px;text-align:center;font-size:34px}
-.container{padding:20px}
-table{width:100%;border-collapse:collapse;background:#fff}
-th,td{border:1px solid #ddd;padding:10px}
-th{background:#083b8a;color:#fff}
-</style></head><body>
 <script>
-const p=prompt('Enter Password');
-if(p!=='admin'){alert('Wrong Password');location='index.html';}
+feedbackForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    let data = JSON.parse(localStorage.getItem('feedbacks') || '[]');
+
+    data.push({
+        name: document.getElementById('name').value,
+        email: document.getElementById('email').value,
+        rating: document.getElementById('rating').value,
+        comments: document.getElementById('comments').value
+    });
+
+    localStorage.setItem('feedbacks', JSON.stringify(data));
+
+    alert('Feedback Submitted');
+    this.reset();
+});
 </script>
-<div class="header">BAMUTIA RD BLOCK - FEEDBACK REPORT</div>
-<div class="container">
-<button onclick="clearAll()">Clear All Feedback</button>
-<table><thead><tr><th>Name</th><th>Email</th><th>Rating</th><th>Comments</th></tr></thead>
-<tbody id="tbody"></tbody></table></div>
-<script>
-function load(){
-let d=JSON.parse(localStorage.getItem('feedbacks')||'[]');
-tbody.innerHTML=d.map(x=>`<tr><td>${x.name}</td><td>${x.email}</td><td>${x.rating}</td><td>${x.comments}</td></tr>`).join('');
-}
-function clearAll(){localStorage.removeItem('feedbacks');load();}
-load();
-</script></body></html>
